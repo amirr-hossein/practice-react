@@ -27,8 +27,8 @@ const App=(props)=> {
                 <div>
                     <input type="text" value={giving} onInput={(e) => give(e)}/>
                     <h1>{props.name}</h1>
-                    <ul>
-                        {notes.map((note,noteIndex)=><li onClick={()=>removeNote(noteIndex)}>{note}</li>)}
+                    <ul> 
+                        {notes.map((note,noteIndex)=><li onClick={()=>removeNote(noteIndex)} key={noteIndex}>{note}</li>)}
                     </ul>
                     <button onClick={add}>add</button>
                 </div>
