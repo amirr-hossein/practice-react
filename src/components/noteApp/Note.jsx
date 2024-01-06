@@ -1,5 +1,10 @@
-import {useState} from "react";
+import {useState,useEffect} from "react";
 const App=(props)=> {
+    useEffect(()=>{
+        setTimeout(()=>{
+            console.log("Note.js rendering")
+        },2000)
+    },[props.a])
     const [notes,setNotes]=useState(["rice","amir","mamad"])
     const [giving,setgiving]=useState()
     const [show,setShow]=useState(false)
@@ -22,7 +27,7 @@ const App=(props)=> {
     }
     return (
         <>
-            <button onClick={toggle}>show/hide</button>
+            <button onClick={toggle}>show/hide notes</button>
             {show ? (
                 <div>
                     <input type="text" value={giving} onInput={(e) => give(e)}/>
