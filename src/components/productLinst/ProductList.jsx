@@ -1,5 +1,6 @@
 import {useState} from "react";
 import Product from "../product/Product.jsx";
+import AuthLogin from "../../context/authLogin.jsx";
 const productList=(props)=>{
     const [products,setProducts]=useState([
         {id:1,title:"book",price:60},
@@ -27,7 +28,9 @@ const productList=(props)=>{
     }
     return(
         <>
-            <button onClick={props.auth}>login!!!</button>
+            <AuthLogin.Consumer>
+                {(context)=> <button onClick={context.login}>login!!!</button>}
+            </AuthLogin.Consumer>
             <button onClick={toggle}>show/hide product</button>
             {show ? (
                 <>
