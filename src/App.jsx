@@ -4,7 +4,7 @@ import Container from "./hoc/Container.jsx"
 import AuthLogin from "./context/authLogin.jsx";
 import {useEffect,useState,useRef} from "react";
 import TitleAppShopping from "./components/titleAppShopping/TitleAppShopping.jsx";
-import Layout from "./components/layout/Layout.jsx";
+import Layout from "./components/layoutShopping/Layout.jsx";
 import "./index.css"
 const App=(props)=> {
     const [remove,setRemove]=useState(false)

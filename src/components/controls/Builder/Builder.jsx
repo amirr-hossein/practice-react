@@ -3,8 +3,8 @@ const Builder=(props)=>{
     return(
         <div>
             <div>{props.title}</div>
-            <button>Add</button>
-            <button>Remove</button>
+            <button onClick={props.add}>Add</button>
+            <button onClick={props.remove}>Remove</button>
         </div>
     )
 }
