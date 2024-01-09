@@ -47,7 +47,6 @@ export default class Shopping extends Component{
         console.log("removeProduct")
     }
     showModal=()=>{
-        // const showOrHide=this.state.modal
         this.setState({modal: true})
     }
     closemodal=()=>{
@@ -59,10 +58,10 @@ export default class Shopping extends Component{
     render(){
         return(
             <WrapperShoping>
-                <Controls modal={this.showModal} productAdd={this.addingProduct} productRemove={this.removeProduct} price={this.state.totalPrice}/>
+                <Controls modal={this.showModal} productAdd={this.addingProduct} productRemove={this.removeProduct} Price={this.state.totalPrice}/>
                 {this.state.modal?(
                     <Modal modalClose={this.closemodal}>
-                        <Order Yes={this.Yes} No={this.closemodal} products={this.state.products}/>
+                        <Order Price={this.state.totalPrice} Yes={this.Yes} No={this.closemodal} products={this.state.products}/>
                     </Modal>
                 ):null}
 
