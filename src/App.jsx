@@ -6,6 +6,7 @@ import {useEffect,useState,useRef} from "react";
 import TitleAppShopping from "./components/titleAppShopping/TitleAppShopping.jsx";
 import Layout from "./components/layoutShopping/Layout.jsx";
 import "./index.css"
+import Blog from "./container/Blog/Blog.jsx";
 const App=(props)=> {
     const [remove,setRemove]=useState(false)
     const [auth,setAuth]=useState(false)
@@ -42,6 +43,7 @@ const App=(props)=> {
             <Layout>
                 <p>فروشگاه</p>
             </Layout>
+            <Blog/>
         </Container>
   )
 }
