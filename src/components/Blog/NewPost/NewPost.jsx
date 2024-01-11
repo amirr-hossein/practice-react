@@ -1,6 +1,5 @@
 import React from 'react'
-// import axios from 'axios'
-import axios from "../../axios.jsx";
+import {blog} from "../../../axios.jsx";
 import './NewPost.css'
 
 class NewPost extends React.Component {
@@ -15,8 +14,8 @@ class NewPost extends React.Component {
       title: this.state.title,
       category: this.state.content,
     }
-    axios
-      .post('/products/', data)
+    blog
+      .post('/posts/', data)
       .then((response) => {
         console.log(response)
       })

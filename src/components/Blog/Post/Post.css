@@ -1,6 +1,6 @@
 .post {
-  width: 188px;
-  height: 89px;
+  width: 218px;
+  height: 119px;
   text-align: center;
   border: 1px solid #ce93d8;
   border-radius: 3px;
@@ -8,5 +8,5 @@
   background: #f3e5f5;
   cursor: pointer;
   display: flex;
-  margin: 30px;
+  margin: 7px;
 }

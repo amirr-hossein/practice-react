@@ -1,9 +1,8 @@
 import React from 'react'
-import axios from "../../axios.jsx";
-
-import Post from '../../components/Post/Post.jsx'
-import FullPost from '../../components/FullPost/FullPost.jsx'
-import NewPost from '../../components/NewPost/NewPost.jsx'
+import {blog} from "../../axios.jsx";
+import Post from '../../components/Blog/Post/Post.jsx'
+import FullPost from '../../components/Blog/FullPost/FullPost.jsx'
+import NewPost from '../../components/Blog/NewPost/NewPost.jsx'
 
 import './Blog.css'
 
@@ -15,8 +14,8 @@ class Blog extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .get('/products/')
+    blog
+      .get('/posts/')
       .then((response) => {
         const posts = response.data.slice(0,4)
         const updatedPosts = posts.map((item) => {
@@ -44,8 +43,8 @@ class Blog extends React.Component {
         return (
           <Post
             key={item.id}
-            title={item.category}
-            img={item.image}
+            title={item.title}
+            authors={item.author}
             click={() => this.selectPostHabdler(item.id)}
           />
         )

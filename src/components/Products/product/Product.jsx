@@ -1,6 +1,6 @@
 import "./Product.css"
-import Wrapper from "../../hoc/Wrapper.jsx"
-import AuthLogin from "../../context/authLogin.jsx";
+import Wrapper from "../../../hoc/Wrapper.jsx"
+import AuthLogin from "../../../context/authLogin.jsx";
 import {useContext} from "react";
 const Product=(props)=>{
     const logged= useContext(AuthLogin)

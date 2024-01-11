@@ -1,6 +1,6 @@
 import {useState} from "react";
 import Product from "../product/Product.jsx";
-import AuthLogin from "../../context/authLogin.jsx";
+import AuthLogin from "../../../context/authLogin.jsx";
 const productList=(props)=>{
     const [products,setProducts]=useState([
         {id:1,title:"book",price:60},

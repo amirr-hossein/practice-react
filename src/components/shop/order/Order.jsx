@@ -1,4 +1,4 @@
-import WrapperShoping from "../../hoc/WrapperShoping.jsx";
+import WrapperShoping from "../../../hoc/WrapperShoping.jsx";
 import Button from "../Ui/button/Button.jsx";
 const Order=(props)=>{
     const summery = Object.keys(props.products).map((item) => {

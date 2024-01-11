@@ -1,11 +1,12 @@
 import React from 'react'
-import axios from "../../axios.jsx";
+import {blog} from "../../../axios.jsx";
 
 import './FullPost.css'
 
 class FullPost extends React.Component {
   state = {
     loadedPost: null,
+    author: "masood"
   }
 
   componentDidUpdate() {
@@ -14,8 +15,8 @@ class FullPost extends React.Component {
         !this.state.loadedPost ||
         (this.state.loadedPost && this.state.loadedPost.id !== this.props.id)
       )
-        axios
-          .get(`/products/${this.props.id}`)
+        blog
+          .get(`/posts/${this.props.id}`)
           .then((response) => {
             this.setState({ loadedPost: response.data })
           })
@@ -23,8 +24,8 @@ class FullPost extends React.Component {
   }
 
   deletePostHandler = () => {
-    axios
-        .delete(`/products/${this.props.id}`)
+    blog
+        .delete(`/posts/${this.props.id}`)
         .then((response) => {
           console.log(response)
         })
@@ -39,7 +40,8 @@ class FullPost extends React.Component {
       post = (
         <div className="full-post">
           <h2>{this.state.loadedPost.title}</h2>
-          <img style={{width:"50px",height:"100px"}} src={this.state.loadedPost.image} alt=""/>
+          <h5>{this.state.author}</h5>
+          {/*<img style={{width:"50px",height:"100px"}} src={this.state.loadedPost.image} alt=""/>*/}
           <div>
             <button onClick={this.deletePostHandler} className="delete">
               Delete
