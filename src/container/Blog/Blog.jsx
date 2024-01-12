@@ -1,12 +1,11 @@
-import React from 'react'
+import React,{Component} from 'react'
 import {blog} from "../../axios.jsx";
 import Post from '../../components/Blog/Post/Post.jsx'
 import FullPost from '../../components/Blog/FullPost/FullPost.jsx'
 import NewPost from '../../components/Blog/NewPost/NewPost.jsx'
-
 import './Blog.css'
-
-class Blog extends React.Component {
+import { Routes, Route , Link } from 'react-router-dom';
+class Blog extends Component {
   state = {
     posts: [],
     selectedPostId: null,
@@ -41,26 +40,44 @@ class Blog extends React.Component {
     if (!this.state.error) {
       posts = this.state.posts.map((item) => {
         return (
-          <Post
-            key={item.id}
-            title={item.title}
-            authors={item.author}
-            click={() => this.selectPostHabdler(item.id)}
-          />
+            <Link key={item.id} to={`/${item.id}`}>
+                <Post
+                    title={item.title}
+                    authors={item.author}
+                    click={() => this.selectPostHabdler(item.id)}
+                />
+            </Link>
         )
       })
     }
     return (
       <div>
-          <div style={{display:"flex",justifyContent:"center"}}>{posts}
-          </div>
+          <header>
+              <ul>
+                  <li>
+                      <Link to="/">home</Link>
+                  </li>
+                  <li>
+                      <Link to={{
+                          pathname:"/newPost",
+                          search:"?sort=post"
+                      }}>newPost</Link>
+                  </li>
+              </ul>
+          </header>
         <section className="posts"></section>
         <section>
-          <FullPost id={this.state.selectedPostId} />
+            {/*<FullPost id={this.state.selectedPostId} />*/}
         </section>
         <section>
-          <NewPost />
         </section>
+        {/*<Switch>*/}
+            <Routes>
+                <Route path="/" element={<div style={{display:"flex",justifyContent:"center"}}>{posts}</div>} />
+                <Route path="/newPost" element={<NewPost />} />
+                <Route path="/:id" element={<FullPost id={this.state.selectedPostId} />} />
+            </Routes>
+        {/*</Switch>*/}
       </div>
     )
   }

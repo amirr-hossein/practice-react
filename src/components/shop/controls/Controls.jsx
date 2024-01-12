@@ -9,7 +9,7 @@ const products = [
 const Copntrols=(props)=>{
     return(
         <div>
-            <p>price:{props.Price}</p>
+            <p>price:{props.Price>0?props.Price:0}</p>
             {products.map((item) => {
                 return (
                     <Builder

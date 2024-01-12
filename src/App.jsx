@@ -8,6 +8,7 @@ import Layout from "./components/shop/layoutShopping/Layout.jsx";
 import "./index.css"
 import Blog from "./container/Blog/Blog.jsx";
 import {Container} from 'react-bootstrap';
+import {BrowserRouter} from "react-router-dom";
 
 const App=(props)=> {
     const [remove,setRemove]=useState(false)
@@ -31,24 +32,27 @@ const App=(props)=> {
         setAuth(true)
     }
     return (
-        <Containers>
-            <Container>
-                <button ref={btnRef} onClick={toggle}>showOrHide everyone</button>
-                <AuthLogin.Provider value={{ auth: auth , login:authLogin}}>
-                    {remove?(
-                        <>
-                            <Note name={"amir"} a={"render"}/>
-                            <ProductList auth={authLogin}/>
-                        </>
-                    ):null}
-                </AuthLogin.Provider>
-                <TitleAppShopping/>
-                <Layout>
-                    <p>فروشگاه</p>
-                </Layout>
-                <Blog/>
-            </Container>
-        </Containers>
+        <BrowserRouter>
+            <Containers>
+                <Container>
+                    <button ref={btnRef} onClick={toggle}>showOrHide everyone</button>
+                    <AuthLogin.Provider value={{ auth: auth , login:authLogin}}>
+                        {remove?(
+                            <>
+                                <Note name={"amir"} a={"render"}/>
+                                <ProductList auth={authLogin}/>
+                            </>
+                        ):null}
+                    </AuthLogin.Provider>
+                    <TitleAppShopping/>
+                    <Layout>
+                        <p>فروشگاه</p>
+                    </Layout>
+                    <Blog/>
+                </Container>
+            </Containers>
+
+        </BrowserRouter>
   )
 }
 export default App

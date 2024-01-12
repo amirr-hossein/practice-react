@@ -5,7 +5,7 @@ import Modal from "../../components/shop/Ui/Modal/Modal.jsx";
 import Order from "../../components/shop/order/Order.jsx";
 import Loader from "../../components/shop/Ui/Loader/Loader.jsx";
 import {product} from "../../axios.jsx"
-import axios from "axios";
+// import axios from "axios";
 const prices = {
     product1: 59,
     product2: 89,
@@ -20,8 +20,8 @@ export default class Shopping extends Component{
         loading:false
     }
     componentDidMount() {
-        axios
-            .get('https://practice-react-d0abc-default-rtdb.firebaseio.com/products')
+        product
+            .get('/products.json')
             .then((response)=>{
                 this.setState({products:response.data})
                 console.log(response)
@@ -51,8 +51,10 @@ export default class Shopping extends Component{
         updateProduct[type]=updatedCount
         const priceSub=prices[type]
         const prevPrice=this.state.totalPrice
-        const newPrice=prevPrice-priceSub
-        this.setState({totalPrice:newPrice,products:updateProduct})
+        if (prevPrice>0){
+            const newPrice=prevPrice-priceSub
+            this.setState({totalPrice:newPrice,products:updateProduct})
+        }
         console.log("removeProduct")
     }
     showModal=()=>{
@@ -81,6 +83,8 @@ export default class Shopping extends Component{
             })
     }
     render(){
+        // console.log(this.state.products)
+
         let order=null
 
         if (this.state.loading){

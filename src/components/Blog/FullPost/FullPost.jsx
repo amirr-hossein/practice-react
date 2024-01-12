@@ -9,7 +9,7 @@ class FullPost extends React.Component {
     author: "masood"
   }
 
-  componentDidUpdate() {
+  componentDidMount() {
     if (this.props.id) {
       if (
         !this.state.loadedPost ||
@@ -34,7 +34,7 @@ class FullPost extends React.Component {
   render() {
     let post = <p style={{ textAlign: 'center' }}>Please select a Post</p>
     if (this.props.id) {
-      post = <p style={{ textAlign: 'center' }}>Loading...</p>
+       post = <p style={{ textAlign: 'center' }}>Loading...</p>
     }
     if (this.state.loadedPost) {
       post = (
