@@ -1,10 +1,11 @@
 import "./Builder.css"
+import Buttons from "../../Ui/button/Button.jsx";
 const Builder=(props)=>{
     return(
         <div>
             <div>{props.title}</div>
-            <button onClick={props.add}>Add</button>
-            <button onClick={props.remove}>Remove</button>
+            <Buttons color={"danger"} btn={props.add}>Add</Buttons>
+            <Buttons btn={props.remove}>Remove</Buttons>
         </div>
     )
 }

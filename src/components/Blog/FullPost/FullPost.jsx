@@ -10,6 +10,7 @@ class FullPost extends React.Component {
   }
 
   componentDidMount() {
+      // console.log(this.props.match.params.id)
     if (this.props.id) {
       if (
         !this.state.loadedPost ||

@@ -1,5 +1,5 @@
 import WrapperShoping from "../../../hoc/WrapperShoping.jsx";
-import Button from "../Ui/button/Button.jsx";
+import Buttons from "../Ui/button/Button.jsx";
 const Order=(props)=>{
     const summery = Object.keys(props.products).map((item) => {
         return (
@@ -16,8 +16,8 @@ const Order=(props)=>{
             <ul>{summery}</ul>
             <h1>price:{props.Price}</h1>
             <p>Continue?</p>
-            <Button btn={props.Yes}>Yes</Button>
-            <Button btn={props.No}>No</Button>
+            <Buttons btn={props.Yes}>Yes</Buttons>
+            <Buttons btn={props.No}>No</Buttons>
         </WrapperShoping>
     )
 }

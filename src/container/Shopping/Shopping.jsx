@@ -5,7 +5,7 @@ import Modal from "../../components/shop/Ui/Modal/Modal.jsx";
 import Order from "../../components/shop/order/Order.jsx";
 import Loader from "../../components/shop/Ui/Loader/Loader.jsx";
 import {product} from "../../axios.jsx"
-// import axios from "axios";
+import { Navigate } from "react-router-dom";
 const prices = {
     product1: 59,
     product2: 89,
@@ -17,7 +17,8 @@ export default class Shopping extends Component{
         products: null,
         totalPrice: 0,
         modal:false,
-        loading:false
+        loading:false,
+        yes:false
     }
     componentDidMount() {
         product
@@ -77,14 +78,18 @@ export default class Shopping extends Component{
             .post('/orders.json', order)
             .then(() => {
                 this.setState({loading:false,modal:false})
+                this.setState({yes:true})
             })
             .catch(() => {
                 this.setState({loading:false,modal:false})
             })
     }
     render(){
-        // console.log(this.state.products)
+        let redirect = null
 
+        if (this.state.yes) {
+            redirect = <Navigate to="/checkout" />;
+        }
         let order=null
 
         if (this.state.loading){
@@ -101,6 +106,7 @@ export default class Shopping extends Component{
         }
         return(
             <WrapperShoping>
+                {redirect}
                 {this.state.modal?(
                     <Modal modalClose={this.closemodal}>
                         {order}

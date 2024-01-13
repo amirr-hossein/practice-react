@@ -1,17 +1,10 @@
 import React from "react";
 import Navbaritem from "../Navbaritem/Navbaritem.jsx";
 const Navbaritems=()=>{
-    const itemNavbar=[
-        {titles:"shop",link:"/"},
-        {titles:"chekout",link:"/"},
-    ]
     return(
         <ul>
-            {itemNavbar.map((item)=>{
-                return(
-                    <Navbaritem title={item.titles} link={item.link}/>
-                )
-            })}
+            <Navbaritem link="/">shop</Navbaritem>
+            <Navbaritem link="/account">Account</Navbaritem>
         </ul>
     )
 }

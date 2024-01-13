@@ -1,8 +1,11 @@
-const Button=(props)=>{
+import { Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+const Buttons=(props)=>{
     return(
-        <button className={`btn ${props.btnType}`} onClick={props.btn}>
+        <Button variant={props.color} className={props.class} onClick={props.btn}>
             {props.children}
-        </button>
+        </Button>
+        // <Button variant="primary" onClick={props.btn}>{props.children}</Button>
     )
 }
-export default Button
+export default Buttons

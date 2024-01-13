@@ -32,7 +32,7 @@ const App=(props)=> {
         setAuth(true)
     }
     return (
-        <BrowserRouter>
+
             <Containers>
                 <Container>
                     <button ref={btnRef} onClick={toggle}>showOrHide everyone</button>
@@ -44,15 +44,18 @@ const App=(props)=> {
                             </>
                         ):null}
                     </AuthLogin.Provider>
-                    <TitleAppShopping/>
-                    <Layout>
-                        <p>فروشگاه</p>
-                    </Layout>
-                    <Blog/>
+                    <BrowserRouter>
+                        <TitleAppShopping/>
+                        <Layout>
+                            <p>فروشگاه</p>
+                        </Layout>
+                    </BrowserRouter>
+                    <BrowserRouter>
+                        <Blog/>
+                    </BrowserRouter>
                 </Container>
             </Containers>
 
-        </BrowserRouter>
   )
 }
 export default App

@@ -5,6 +5,7 @@ import FullPost from '../../components/Blog/FullPost/FullPost.jsx'
 import NewPost from '../../components/Blog/NewPost/NewPost.jsx'
 import './Blog.css'
 import { Routes, Route , Link } from 'react-router-dom';
+import Page404 from "../../components/Blog/Page404/Page404.jsx";
 class Blog extends Component {
   state = {
     posts: [],
@@ -31,7 +32,7 @@ class Blog extends Component {
       })
   }
 
-  selectPostHabdler = (id) => {
+  selectPostHandler = (id) => {
     this.setState({ selectedPostId: id })
   }
 
@@ -40,12 +41,15 @@ class Blog extends Component {
     if (!this.state.error) {
       posts = this.state.posts.map((item) => {
         return (
-            <Link key={item.id} to={`/${item.id}`}>
-                <Post
-                    title={item.title}
-                    authors={item.author}
-                    click={() => this.selectPostHabdler(item.id)}
-                />
+            <Link key={item.id} to={`/${item.id}`} style={{textDecoration:"none"}}>
+                <div style={{color:"black"}}>
+                    <Post
+                        key={item.id}
+                        title={item.title}
+                        authors={item.author}
+                        click={() => this.selectPostHandler(item.id)}
+                    />
+                </div>
             </Link>
         )
       })
@@ -71,13 +75,12 @@ class Blog extends Component {
         </section>
         <section>
         </section>
-        {/*<Switch>*/}
             <Routes>
                 <Route path="/" element={<div style={{display:"flex",justifyContent:"center"}}>{posts}</div>} />
                 <Route path="/newPost" element={<NewPost />} />
                 <Route path="/:id" element={<FullPost id={this.state.selectedPostId} />} />
+                <Route path="/*" element={<Page404/>}/>
             </Routes>
-        {/*</Switch>*/}
       </div>
     )
   }

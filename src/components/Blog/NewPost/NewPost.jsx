@@ -1,5 +1,6 @@
 import React from 'react'
 import {blog} from "../../../axios.jsx";
+import { Navigate } from "react-router-dom";
 import './NewPost.css'
 
 class NewPost extends React.Component {
@@ -7,6 +8,7 @@ class NewPost extends React.Component {
     title: '',
     content: '',
     author: 'Masood',
+      submitted: false,
   }
 
   postDataHandler = () => {
@@ -18,12 +20,21 @@ class NewPost extends React.Component {
       .post('/posts/', data)
       .then((response) => {
         console.log(response)
+          this.setState({ submitted: true })
       })
   }
 
   render() {
+      let redirect = null
+
+      if (this.state.submitted) {
+          redirect = <Navigate to="/" />;
+      }
+
+
     return (
       <div className="new-post">
+          {redirect}
         <h2>Add a Post</h2>
         <label>Title</label>
         <input
