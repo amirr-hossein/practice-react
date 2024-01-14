@@ -12,7 +12,6 @@ const Order=(props)=>{
     return(
         <WrapperShoping>
             <h3>order</h3>
-            {/*<Backdrop/>*/}
             <ul>{summery}</ul>
             <h1>price:{props.Price}</h1>
             <p>Continue?</p>
